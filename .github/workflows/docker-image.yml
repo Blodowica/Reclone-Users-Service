@@ -1,4 +1,5 @@
-name: Build and Test
+name: CI
+
 on:
   push:
     branches:
@@ -11,18 +12,18 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    services:
+      docker:
+        image: docker:dind
+        options: --privileged
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Build the .NET Core solution
-      run: dotnet build --configuration Release
-
-    - name: Run unit tests
-      run: dotnet test --logger trx --results-directory ./test-results --configuration Release
-      continue-on-error: true
-
-    - name: Archive test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: ./test-results
+    - name: Build and test with Docker
+      run: |
+        docker build -t my-image .
+        docker run my-image dotnet test --logger "trx;LogFileName=testresults.trx"
+      env:
+        DOCKER_HOST: tcp://localhost:2375
