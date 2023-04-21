@@ -19,13 +19,13 @@ jobs:
         dotnet-version: '6.0.x'
 
     - name: Restore NuGet packages
-      working-directory: ./src/Reclone-Users-Service
+      working-directory: ./Reclone-Users-Service
       run: dotnet restore
 
     - name: Build
-      working-directory: ./src/Reclone-Users-Service
+      working-directory: ./Reclone-Users-Service
       run: dotnet build --configuration Release
 
     - name: Test
-      working-directory: ./test/Reclone-Users-Service.Tests
+      working-directory: ./Reclone-Users-Service
       run: dotnet test --no-restore --verbosity normal
