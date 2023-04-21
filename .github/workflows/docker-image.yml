@@ -14,13 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build the Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: false
-        tags: my-image:latest
-
     - name: Build the .NET Core solution
       run: dotnet build --configuration Release
 
