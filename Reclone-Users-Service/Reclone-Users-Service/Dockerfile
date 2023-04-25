@@ -10,7 +10,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Reclone-Users-Service/Reclone-Users-Service.csproj", "Reclone-Users-Service/"]
+COPY ["Reclone-Users-Service.csproj", "Reclone-Users-Service/"]
 RUN dotnet restore "Reclone-Users-Service/Reclone-Users-Service.csproj"
 COPY . .
 WORKDIR "/src/Reclone-Users-Service"
@@ -22,4 +22,4 @@ RUN dotnet publish "Reclone-Users-Service.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Reclone-Users-Service.dll"]
+ENTRYPOINT CMD ["dotnet", "Reclone-Users-Service.dll"]

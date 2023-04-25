@@ -5,7 +5,8 @@ namespace Users_Test_Project
         [Fact]
         public void Test1()
         {
-
+            string test = "test";
+            Assert.Equal(test, "test");
         }
     }
 }
