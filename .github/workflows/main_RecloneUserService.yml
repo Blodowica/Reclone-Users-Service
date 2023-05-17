@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b4abfbd0c5445a9887437a8963fa2c4 }}/141108/reclone-container:${{ github.sha }}
-        file: ./Reclone-Users-Service//Dockerfile
+        file: ./Reclone-Users-Service/Reclone-Users-Service//Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
