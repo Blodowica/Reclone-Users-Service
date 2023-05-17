@@ -11,7 +11,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Reclone-Users-Service.csproj", "Reclone-Users-Service/"]
-RUN dotnet restore "./Reclone-Users-Service/Reclone-Users-Service/Reclone-Users-Service.csproj"
+RUN dotnet restore "Reclone-Users-Service/Reclone-Users-Service/Reclone-Users-Service.csproj"
 COPY . .
 WORKDIR "/src/Reclone-Users-Service"
 RUN dotnet build "Reclone-Users-Service.csproj" -c Release -o /app/build
