@@ -78,7 +78,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Blodowica_Reclone-Users-Service" /o:"blodowica" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-           dotnet build ./Reclone-User-Service/Reclone-User-Service/Reclone-User-Service.csproj --no-incremental
+           dotnet build ./Reclone-Users-Service/Reclone-Users-Service/Reclone-Users-Service.csproj --no-incremental
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
   deploy:
@@ -101,4 +101,4 @@ jobs:
           app-name: 'RecloneUserServices'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C3773627950B43B3AF97BE202D1F5856 }}
-          package:  ./Reclone-Users-Service/${{env.DOTNET_ROOT}}/myapp
+          package:  ./Reclone-Users-Service/myapp
