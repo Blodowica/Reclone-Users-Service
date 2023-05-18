@@ -56,4 +56,4 @@ jobs:
           app-name: 'RecloneUserServices'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C3773627950B43B3AF97BE202D1F5856 }}
-          package: .
+          package:  ${{env.DOTNET_ROOT}}/myapp
