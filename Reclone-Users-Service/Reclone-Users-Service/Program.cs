@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddHttpClient("PostMicroservice", client =>
+/*builder.Services.AddHttpClient("PostMicroservice", client =>
 {
     client.BaseAddress = new Uri("http://localhost:9877"); // Replace with the base address of Microservice1
 });
@@ -19,7 +19,7 @@ builder.Services.AddHttpClient("AuthMicroservice", client =>
 builder.Services.AddHttpClient("SearchMicroservice", client =>
 {
     client.BaseAddress = new Uri(""); // Replace with the base address of Microservice2
-});
+});*/
 
 //ADD DB CONTEXT
 /*builder.Services.AddDbContext<UserDbContext>(options => 
@@ -36,10 +36,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+{
 }
 
 app.UseHttpsRedirection();
