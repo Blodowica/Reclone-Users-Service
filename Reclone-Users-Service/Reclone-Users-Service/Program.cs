@@ -7,12 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient("PostMicroservice", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:9877"); // Replace with the base address of Microservice1
+    client.BaseAddress = new Uri("https://reclonepostservice.azurewebsites.net/"); // Replace with the base address of Microservice1
 });
 
 builder.Services.AddHttpClient("AuthMicroservice", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:19092"); // Replace with the base address of Microservice2
+    client.BaseAddress = new Uri("https://recloneauthservice.azurewebsites.net/"); // Replace with the base address of Microservice2
 });
 
 
