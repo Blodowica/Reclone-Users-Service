@@ -25,7 +25,11 @@ jobs:
 
       - name: Build
         working-directory: ./Reclone-Users-Service
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp --self-contained --runtime linux-x64
+        run: dotnet build --configuration Release
+        
+      - name: Publish
+        working-directory: ./Reclone-Users-Service
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
